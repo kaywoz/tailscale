@@ -7,10 +7,10 @@
 		"group:guests":    ["kaywoz@outlook.com"],
 	},
 	"acls": [
-    // Debug
-	//{"action": "accept", "src": ["*"], "dst": ["*:*"]},
-	// in case of emergency etc.
-    // TEMPLATE { "action": "accept", "src": ["*"], "dst": ["vm-subnet:*"] },
+		// Debug
+		//{"action": "accept", "src": ["*"], "dst": ["*:*"]},
+		// in case of emergency etc.
+		// TEMPLATE { "action": "accept", "src": ["*"], "dst": ["vm-subnet:*"] },
 		{
 			"action": "accept",
 			"src":    ["tag:internet"],
@@ -128,8 +128,14 @@
 			"dst":    ["tag:ssh:22"],
 		},
 	],
+	"nodeAttrs": [
+		{
+			"target": ["group:privusers"],
+			"attr":   ["funnel"],
+		},
+	],
 	"hosts": {
-            //"vm-subnet": "10.77.0.0/17",
+		//"vm-subnet": "10.77.0.0/17",
 	},
 	"ssh": [
 		{
@@ -146,38 +152,31 @@
 			"users":  ["ka", "root"],
 			//"checkPeriod": "72h",
 		},
-        ],
-  "nodeAttrs": [
-    {
-      "target": ["group:privusers","tag:service"],
-      "attr": ["funnel"],
-    },
 	],
 	// to avoid DERP connections and instead use outbound NAT via opnsense
 	"randomizeClientPort": true,
 	"tagOwners": {
-//resource-type
+		//resource-type
 		"tag:hypervisor":       ["group:privusers"],
 		"tag:server":           ["group:privusers"],
 		"tag:docker":           ["group:privusers"],
-		"tag:storage":          ["group:privusers"],                
+		"tag:storage":          ["group:privusers"],
 		"tag:monitoring":       ["group:privusers"],
 		"tag:network":          ["group:privusers"],
 		"tag:guests":           ["group:privusers"],
-		"tag:workers":          ["group:privusers"], 
-		"tag:endpoint-trusted": ["group:privusers"],   
+		"tag:workers":          ["group:privusers"],
+		"tag:endpoint-trusted": ["group:privusers"],
 		"tag:cloud":            ["group:privusers"],
-		"tag:exit-node":        ["group:privusers"], 
+		"tag:exit-node":        ["group:privusers"],
 
-		"tag:internet":         ["group:privusers"],
-   		"tag:cicd":             ["group:privusers"],                                                  
-  
-//service
-		"tag:mgmt":             ["group:privusers"],
-		"tag:xoa":              ["group:privusers"],
-		"tag:ssh":              ["group:privusers"],
-		"tag:golink":           ["group:privusers"],
-        "tag:service"           ["group:privusers"],
+		"tag:internet": ["group:privusers"],
+		"tag:cicd":     ["group:privusers"],
+
+		//service
+		"tag:mgmt":   ["group:privusers"],
+		"tag:xoa":    ["group:privusers"],
+		"tag:ssh":    ["group:privusers"],
+		"tag:golink": ["group:privusers"],
 
 		//Test access rules every time they're saved.
 	},
