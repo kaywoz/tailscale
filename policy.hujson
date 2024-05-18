@@ -146,6 +146,12 @@
 			"users":  ["ka", "root"],
 			//"checkPeriod": "72h",
 		},
+        ],
+  "nodeAttrs": [
+    {"
+      "target": ["group:privusers","tag:service"],
+      "attr": ["funnel"],
+    },
 	],
 	// to avoid DERP connections and instead use outbound NAT via opnsense
 	"randomizeClientPort": true,
@@ -171,6 +177,7 @@
 		"tag:xoa":              ["group:privusers"],
 		"tag:ssh":              ["group:privusers"],
 		"tag:golink":           ["group:privusers"],
+        "tag:service"           ["group:privusers"],
 
 		//Test access rules every time they're saved.
 	},
