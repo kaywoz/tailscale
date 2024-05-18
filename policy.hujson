@@ -148,7 +148,7 @@
 		},
         ],
   "nodeAttrs": [
-    {"
+    {
       "target": ["group:privusers","tag:service"],
       "attr": ["funnel"],
     },
