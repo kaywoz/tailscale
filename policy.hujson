@@ -11,6 +11,11 @@
 		//{"action": "accept", "src": ["*"], "dst": ["*:*"]},
 		// in case of emergency etc.
 		// TEMPLATE { "action": "accept", "src": ["*"], "dst": ["vm-subnet:*"] },
+			{
+			"action": "accept",
+			"src":    ["*"],
+			"dst":    ["tag:golink:*"],
+		},
 		{
 			"action": "accept",
 			"src":    ["tag:internet"],
