@@ -7,9 +7,10 @@
 		"group:guests":    ["kaywoz@outlook.com"],
 	},
 	"acls": [
-		// Debug
-		//{"action": "accept", "src": ["*"], "dst": ["*:*"]},
-		// in case of emergency etc.
+    // Debug
+	//{"action": "accept", "src": ["*"], "dst": ["*:*"]},
+	// in case of emergency etc.
+    // TEMPLATE { "action": "accept", "src": ["*"], "dst": ["vm-subnet:*"] },
 		{
 			"action": "accept",
 			"src":    ["tag:internet"],
@@ -128,8 +129,7 @@
 		},
 	],
 	"hosts": {
-		//"random-host": "172.20.1.10",
-		//"corp-network": "172.20.1.0/29",
+            //"vm-subnet": "10.77.0.0/17",
 	},
 	"ssh": [
 		{
