@@ -1,4 +1,4 @@
-// This tailnet's ACLs are maintained in https://github.com/kaywoz/tailscale-prod/blob/main/policy.hujson
+// This tailnet's ACLs are maintained in https://github.com/kaywoz/tailscale
 
 {
 	// Groups
