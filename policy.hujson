@@ -1,0 +1,183 @@
+// This tailnet's ACLs are maintained in https://github.com/kaywoz/tailscale-prod/blob/main/policy.hujson
+
+{
+	// Groups
+	"groups": {
+		"group:privusers": ["kaywoz@github"],
+		"group:guests":    ["kaywoz@outlook.com"],
+	},
+	"acls": [
+		// Debug
+		//{"action": "accept", "src": ["*"], "dst": ["*:*"]},
+		// in case of emergency etc.
+		{
+			"action": "accept",
+			"src":    ["tag:internet"],
+			"dst":    ["autogroup:internet:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:monitoring"],
+			"proto":  "1",
+			"dst":    ["*:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:cicd:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:workers:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:hypervisor:*"], // temporary
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:workers"],
+			"dst":    ["tag:workers:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:docker"],
+			"dst":    ["tag:docker:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:docker"],
+			"dst":    ["tag:storage:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:monitoring"],
+			"dst":    ["tag:mgmt:80,443"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:monitoring"],
+			"dst":    ["tag:hypervisor:80,443"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:monitoring"],
+			"dst":    ["tag:storage:5001,443"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:monitoring"],
+			"dst":    ["tag:xoa:80,443"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:monitoring"],
+			"dst":    ["tag:docker:80,443"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:monitoring:8834"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:xoa"],
+			"dst":    ["tag:hypervisor:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:hypervisor"],
+			"dst":    ["tag:hypervisor:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:mgmt:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:docker:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:storage:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["group:privusers"],
+			"dst":    ["tag:endpoint-trusted:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["group:privusers"],
+			"dst":    ["tag:ssh:22"],
+		},
+		{
+			"action": "accept",
+			"src":    ["group:guests"],
+			"dst":    ["tag:endpoint-trusted:*"],
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:ssh:22"],
+		},
+	],
+	"hosts": {
+		//"random-host": "172.20.1.10",
+		//"corp-network": "172.20.1.0/29",
+	},
+	"ssh": [
+		{
+			"action":      "check",
+			"src":         ["group:privusers"],
+			"dst":         ["tag:ssh"],
+			"users":       ["ka", "root"],
+			"checkPeriod": "72h",
+		},
+		{
+			"action": "accept",
+			"src":    ["tag:endpoint-trusted"],
+			"dst":    ["tag:ssh"],
+			"users":  ["ka", "root"],
+			//"checkPeriod": "72h",
+		},
+	],
+	// to avoid DERP connections and instead use outbound NAT via opnsense
+	"randomizeClientPort": true,
+	"tagOwners": {
+		"tag:hypervisor":       ["group:privusers"],
+		"tag:server":           ["group:privusers"],
+		"tag:logging":          ["group:privusers"],
+		"tag:monitoring":       ["group:privusers"],
+		"tag:mgmt":             ["group:privusers"],
+		"tag:network":          ["group:privusers"],
+		"tag:fw":               ["group:privusers"],
+		"tag:cloud":            ["group:privusers"],
+		"tag:endpoint":         ["group:privusers"],
+		"tag:endpoint-trusted": ["group:privusers"],
+		"tag:docker":           ["group:privusers"],
+		"tag:xoa":              ["group:privusers"],
+		"tag:storage":          ["group:privusers"],
+		"tag:ssh":              ["group:privusers"],
+		"tag:guests":           ["group:privusers"],
+		"tag:exit-node":        ["group:privusers"],
+		"tag:internet":         ["group:privusers"],
+		"tag:workers":          ["group:privusers"],
+		"tag:golink":           ["group:privusers"],
+		"tag:cicd":             ["group:privusers"],
+		//Test access rules every time they're saved.
+	},
+	"tests": [
+		{
+			"src": "group:privusers",
+			"accept": [
+				"tag:ssh:22",
+			],
+		},
+	],
+}
