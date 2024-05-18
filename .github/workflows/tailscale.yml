@@ -40,14 +40,12 @@ jobs:
               # For posting a rich message using Block Kit
               payload: |
                 {
-                "text": "${{ github.actor }} pulled the trigger."\n"GitHub Action build result: ${{ job.status }}"\n"Repository: ${{ github.repository }}"\n"Actions: ${{ github.workflow }}"\n"Link: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-                  "blocks": [
+                  "text": "${{ github.actor }} pulled the trigger."\nGitHub Action build result: ${{ job.status }}\nRepository: ${{ github.repository }}\n"Actions: ${{ github.workflow }}\nLink: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",                  "blocks": [
                     {
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                "text": "${{ github.actor }} pulled the trigger."\n"GitHub Action build result: ${{ job.status }}"\n"Repository: ${{ github.repository }}"\n"Actions: ${{ github.workflow }}"\n"Link: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                      }
+                        "text": "${{ github.actor }} pulled the trigger."\nGitHub Action build result: ${{ job.status }}\nRepository: ${{ github.repository }}\n"Actions: ${{ github.workflow }}\nLink: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}"                      }
                     }
                   ]
                 }
