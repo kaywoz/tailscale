@@ -33,7 +33,7 @@ jobs:
           tailnet: ${{ secrets.TS_TAILNET }}
           action: test
           
-      - name: Send custom JSON data to Slack workflow
+      - name: Send Slack notification
         id: slack
         uses: slackapi/slack-github-action@v1.26.0
         with:
