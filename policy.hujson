@@ -6,6 +6,18 @@
 		"group:privusers": ["kaywoz@github"],
 		"group:guests":    ["kaywoz@outlook.com"],
 	},
+
+	{
+  "grants": [{
+      "src": ["group:privusers"],
+      "dst": ["tag:golink"],
+      "app": {
+        "tailscale.com/cap/golink": [{
+            "admin": true
+        }]
+      }
+  }]
+}
 	"acls": [
 		// Debug
 		//{"action": "accept", "src": ["*"], "dst": ["*:*"]},
