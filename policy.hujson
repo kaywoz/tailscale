@@ -146,7 +146,7 @@
 		{
 			"action": "accept", //the why, how of it all...
 			"src":    ["tag:device-vulnscanner"], // tag for vulnscanners
-			"dst":    ["tag:*"], // allowed to scan all targets
+			"dst":    ["*:*"], // allowed to scan all targets
 		},
 		{
 			"action": "accept", //the why, how of it all...
