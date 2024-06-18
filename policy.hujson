@@ -90,7 +90,7 @@
 		{
 			"action": "accept", //the why, how of it all...
 			"src":    ["tag:trusted"], //trusted allowed to all
-			"dst":    ["tag:*:*"], 
+			"dst":    ["*:*"], 
 		},
 		//acls where xoa are allowed
 		{
