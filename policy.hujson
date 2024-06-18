@@ -91,7 +91,7 @@
 		{
 			"action": "accept", 
 			"src":    ["*"], //all allowed to send logs to logger
-			"dst":    ["tag:monitoring:80"], 
+			"dst":    ["tag:monitoring:*"], 
 		},
 		//acls where trusted endpoints are allowed
 		{
