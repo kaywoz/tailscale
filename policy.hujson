@@ -32,6 +32,7 @@
 		"tag:app-mgmt":             ["group:privusers"], //the why, how of it all...
 		"tag:app-xoa":              ["group:privusers"], //the why, how of it all...
 		"tag:app-cftunnel":              ["group:privusers"], //the why, how of it all...
+		"tag:app-dockge":              ["group:privusers"], //the why, how of it all...
 		
 	},
 	"hosts":               {
@@ -147,6 +148,12 @@
 			"action": "accept", 
 			"src":    ["tag:app-xoa"], //xoa is allowed all to hypervisor
 			"dst":    ["tag:hypervisor:*"],
+		},
+		//acls where dockge is allowed
+		{
+			"action": "accept", 
+			"src":    ["tag:docker"], //docker is allowed remote dockge
+			"dst":    ["tag:app-dockge:5001"],
 		},
 		//extras
 		{
