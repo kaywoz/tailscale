@@ -28,9 +28,9 @@
 		"tag:logging":             ["group:privusers"], //the why, how of it all...
 		"tag:cftunnel":             ["group:privusers"], //the why, how of it all...
 		//apps to access
-		"tag:access-golink":             ["group:privusers"], //the why, how of it all...
-		"tag:access-mgmt":             ["group:privusers"], //the why, how of it all...
-		"tag:access-xoa":              ["group:privusers"], //the why, how of it all...
+		"tag:app-golink":             ["group:privusers"], //the why, how of it all...
+		"tag:app-mgmt":             ["group:privusers"], //the why, how of it all...
+		"tag:app-xoa":              ["group:privusers"], //the why, how of it all...
 		
 	},
 	"hosts":               {
@@ -60,7 +60,7 @@
 	],
 	"grants": [{
 		"src": ["group:privusers"], //the why, how of it all...
-		"dst": ["tag:access-golink"], //the why, how of it all...
+		"dst": ["tag:app-golink"], //the why, how of it all...
 		"app": {
 			"tailscale.com/cap/golink": [{
 				"admin": true, //the why, how of it all...
@@ -79,7 +79,7 @@
 		{
 			"action": "accept", 
 			"src":    ["*"], //all allowed to access golink
-			"dst":    ["tag:access-golink:*"], 
+			"dst":    ["tag:app-golink:*"], 
 		},
 		{
 			"action": "accept", 
@@ -95,14 +95,14 @@
 		//acls where xoa are allowed
 		{
 			"action": "accept", //the why, how of it all...
-			"src":    ["tag:xoa"], //the why, how of it all...
+			"src":    ["tag:app-xoa"], //the why, how of it all...
 			"dst":    ["tag:hypervisor:*"], //the why, how of it all...
 		},
 		//acls where cftunnel are allowed
 		{
 			"action": "accept", //the why, how of it all...
-			"src":    ["tag:access-cftunnel"], //the why, how of it all...
-			"dst":    ["tag:access-xoa:*"], //the why, how of it all...
+			"src":    ["tag:app-cftunnel"], //the why, how of it all...
+			"dst":    ["tag:app-xoa:*"], //the why, how of it all...
 		},
 		//acls where backup is allowed
 		{
@@ -119,7 +119,7 @@
 		{
 			"action": "accept", 
 			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:access-mgmt:80,443"],
+			"dst":    ["tag:app-mgmt:80,443"],
 		},
 		{
 			"action": "accept", 
@@ -134,7 +134,7 @@
 		{
 			"action": "accept", 
 			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:access-xoa:80,443"],
+			"dst":    ["tag:app-xoa:80,443"],
 		},
 		{
 			"action": "accept",
@@ -144,7 +144,7 @@
 		//acls where xoa is allowed to hypervisor
 		{
 			"action": "accept", 
-			"src":    ["tag:access-xoa"], //xoa is allowed all to hypervisor
+			"src":    ["tag:app-xoa"], //xoa is allowed all to hypervisor
 			"dst":    ["tag:hypervisor:*"],
 		},
 		//extras
