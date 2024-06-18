@@ -33,6 +33,7 @@
 		"tag:app-xoa":              ["group:privusers"], //the why, how of it all...
 		"tag:app-cftunnel":              ["group:privusers"], //the why, how of it all...
 		"tag:app-dockge":              ["group:privusers"], //the why, how of it all...
+		"tag:app-docker-socket-proxy":              ["group:privusers"], //the why, how of it all...
 		
 	},
 	"hosts":               {
@@ -90,7 +91,7 @@
 		},
 		{
 			"action": "accept", 
-			"src":    ["*"], //all allowed to send logs to logger
+			"src":    ["*"], //all allowed to send pings to healthchecks
 			"dst":    ["tag:monitoring:*"], 
 		},
 		//acls where trusted endpoints are allowed
@@ -159,6 +160,12 @@
 			"action": "accept", 
 			"src":    ["tag:docker"], //docker is allowed remote dockge
 			"dst":    ["tag:app-dockge:5001"],
+		},
+		//acls where docker-socket-proxy is allowed
+		{
+			"action": "accept", 
+			"src":    ["tag:docker"], //docker is allowed remote dockge
+			"dst":    ["tag:app-docker-socket-proxy:2375"],
 		},
 		//extras
 		{
