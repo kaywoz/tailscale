@@ -30,7 +30,7 @@
 		//apps to access
 		"tag:app-golink":             ["group:privusers"], //the why, how of it all...
 		"tag:app-mgmt":             ["group:privusers"], //the why, how of it all...
-		"tag:app-xoa":              ["group:privusers"], //the why, how of it all...
+		"tag:app-xos":              ["group:privusers"], //the why, how of it all...
 		"tag:app-cftunnel":              ["group:privusers"], //the why, how of it all...
 		"tag:app-dockge":              ["group:privusers"], //the why, how of it all...
 		"tag:app-docker-socket-proxy":              ["group:privusers"], //the why, how of it all...
@@ -100,17 +100,17 @@
 			"src":    ["tag:trusted"], //trusted allowed to all
 			"dst":    ["*:*"], 
 		},
-		//acls where xoa are allowed
+		//acls where xos are allowed
 		{
 			"action": "accept", //the why, how of it all...
-			"src":    ["tag:app-xoa"], //the why, how of it all...
+			"src":    ["tag:app-xos"], //the why, how of it all...
 			"dst":    ["tag:hypervisor:*"], //the why, how of it all...
 		},
 		//acls where cftunnel are allowed
 		{
 			"action": "accept", //the why, how of it all...
 			"src":    ["tag:app-cftunnel"], //the why, how of it all...
-			"dst":    ["tag:app-xoa:*"], //the why, how of it all...
+			"dst":    ["tag:app-xos:*"], //the why, how of it all...
 		},
 		//acls where backup is allowed
 		{
@@ -142,17 +142,17 @@
 		{
 			"action": "accept", 
 			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:app-xoa:80,443"],
+			"dst":    ["tag:app-xos:80,443"],
 		},
 		{
 			"action": "accept",
 			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
 			"dst":    ["tag:docker:80,443"],
 		},
-		//acls where xoa is allowed to hypervisor
+		//acls where xos is allowed to hypervisor
 		{
 			"action": "accept", 
-			"src":    ["tag:app-xoa"], //xoa is allowed all to hypervisor
+			"src":    ["tag:app-xos"], //xos is allowed all to hypervisor
 			"dst":    ["tag:hypervisor:*"],
 		},
 		//acls where dockge is allowed
