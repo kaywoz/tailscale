@@ -1,7 +1,7 @@
 name: Ping healthchecks
 on:
   workflow_run:
-    workflows: ['sync tailscale acl's']
+    workflows: ['sync tailscale acls']
     types: [completed]
 jobs:
   Ping-Success:
