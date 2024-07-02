@@ -34,6 +34,7 @@
 		"tag:app-cftunnel":              ["group:privusers"], //the why, how of it all...
 		"tag:app-dockge":              ["group:privusers"], //the why, how of it all...
 		"tag:app-docker-socket-proxy":              ["group:privusers"], //the why, how of it all...
+		"tag:app-traefik":              ["group:privusers"], //the why, how of it all...
 		
 	},
 	"hosts":               {
@@ -83,6 +84,11 @@
 			"action": "accept", 
 			"src":    ["*"], //all allowed to access golink
 			"dst":    ["tag:app-golink:*"], 
+		},
+			{
+			"action": "accept", 
+			"src":    ["*"], //all allowed to access traefik
+			"dst":    ["tag:app-traefik:*"], 
 		},
 		{
 			"action": "accept", 
