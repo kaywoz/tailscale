@@ -161,6 +161,12 @@
 			"src":    ["tag:app-xos"], //xos is allowed all to hypervisor
 			"dst":    ["tag:hypervisor:*"],
 		},
+		// acls where xos can access nasty-nightfish
+		{
+			"action": "accept", 
+			"src":    ["tag:app-xos"], //xos is allowed all to hypervisor
+			"dst":    ["tag:storage:*"],
+		},
 		//acls where dockge is allowed
 		{
 			"action": "accept", 
