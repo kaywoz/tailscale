@@ -106,6 +106,12 @@
 			"src":    ["tag:trusted"], //trusted allowed to all
 			"dst":    ["*:*"], 
 		},
+		//acls where self is allowed
+			{
+			"action": "accept", //the why, how of it all...
+			"src":    ["tag:hypervisor"], //trusted allowed to all
+			"dst":    ["tag:hypervisor:*"], 
+		},
 		//acls where xos are allowed
 		{
 			"action": "accept", //the why, how of it all...
