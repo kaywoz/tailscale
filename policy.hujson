@@ -110,7 +110,7 @@
 		{
 			"action": "accept", //the why, how of it all...
 			"src":    ["tag:trusted"], //trusted allowed to all
-			"dst":    ["tag:oob"], 
+			"dst":    ["tag:oob:*"], 
 		},
 		//acls where self is allowed
 			{
