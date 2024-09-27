@@ -194,7 +194,7 @@
 		//testing
 		{
 			"action": "accept", 
-			"src":    ["*:*"],
+			"src":    ["*"],
 			"dst":    ["*:*"],
 		},
 		//extras
