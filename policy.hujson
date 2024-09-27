@@ -191,6 +191,12 @@
 			"src":    ["tag:docker"], //docker is allowed remote dockge
 			"dst":    ["tag:app-docker-socket-proxy:2375"],
 		},
+		//testing
+		{
+			"action": "accept", 
+			"src":    ["*:*"],
+			"dst":    ["*:*"],
+		},
 		//extras
 		{
 			"action": "accept", 
