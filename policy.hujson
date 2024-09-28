@@ -109,7 +109,7 @@
 		{
 			"action": "accept", 
 			"src":    ["tag:monitoring"], //monitoring is allowed web mgmt
-			"dst":    ["tag:*:80,443,5001"],
+			"dst":    ["*:80,443,5001"],
 		},
 		// acls where xos can access nasty-nightfish
 		{
