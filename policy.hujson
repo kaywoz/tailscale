@@ -97,6 +97,11 @@
 			"dst":    ["*:*"], 
 		},
 		//acls where self is allowed
+		{
+			"action": "accept", 
+			"src":    ["tag:hypervisor"], //hypervisor allowed all to hypervisor
+			"dst":    ["tag:hypervisor:*"], 
+		},
 		//acls where xos are allowed
 		{
 			"action": "accept", //the why, how of it all...
