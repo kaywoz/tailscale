@@ -25,6 +25,7 @@
 		"tag:ssh":              ["group:privusers"], //tailscale ssh access
 		///////////////////////////////////////////////////////////////////
 		"tag:app-xos":          ["group:privusers"], //xos access
+		"tag:app-golink":       ["group:privusers"], //golink container access
 	},
 	"hosts":               {
 		// "vm-subnet": "10.77.0.0/17" //sample net not in use
