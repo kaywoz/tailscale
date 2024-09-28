@@ -139,6 +139,7 @@
 			"action": "accept", 
 			"src":    ["group:privusers"], //privusers allowed to ssh
 			"dst":    ["tag:ssh:22"],
+		},	
 		{
 			"action": "accept", 
 			"src":    ["tag:trusted"], //trusted allowed to ssh
