@@ -15,44 +15,48 @@
 		"tag:service":          ["group:privusers"], //all docker services
 		"tag:oob":             	["group:privusers"], //any oob-devices
 		"tag:security":         ["group:privusers"], //all security devices and infra
+		"tag:logging":         	["group:privusers"], //all logging devices and infra
+		"tag:monitoring":       ["group:privusers"], //all monitoring devices and infra
 		"tag:guests":           ["group:privusers"], //guest assets
 		"tag:trusted": 		["group:privusers"], //natively trusted assets
 		"tag:exit-node":        ["group:privusers"], //all exit-nodes
 		"tag:internet":         ["group:privusers"], //native internet
 		"tag:cicd":             ["group:privusers"], //deployed via pipeline
 		"tag:ssh":              ["group:privusers"], //tailscale ssh access
+		///////////////////////////////////////////////////////////////////
+		"tag:app-xos":          ["group:privusers"], //xos access
 	},
 	"hosts":               {
-		// "vm-subnet": "10.77.0.0/17" //the why, how of it all...
+		// "vm-subnet": "10.77.0.0/17" //sample net not in use
 	},
-	"randomizeClientPort": true, //the why, how of it all...
-	"ssh": [
+	"randomizeClientPort": true, //previously used when opnsense was edge gw
+	"ssh": [ // privusers and trusted devices can access ssh tags with ka/root accounts
 		{
-			"action":      "check", //the why, how of it all...
-			"src":         ["group:privusers"], //the why, how of it all...
-			"dst":         ["tag:ssh"], //the why, how of it all...
-			"users":       ["ka", "root"], //the why, how of it all...
-			"checkPeriod": "72h", //the why, how of it all...
+			"action":      "check",
+			"src":         ["group:privusers"], 
+			"dst":         ["tag:ssh"], 
+			"users":       ["ka", "root"],
+			"checkPeriod": "72h",
 		},
 		{
-			"action": "accept", //the why, how of it all...
-			"src":    ["tag:trusted"], //the why, how of it all...
-			"dst":    ["tag:ssh"], //the why, how of it all...
-			"users":  ["ka", "root"], //the why, how of it all...
+			"action": "accept", 
+			"src":    ["tag:trusted"],
+			"dst":    ["tag:ssh"],
+			"users":  ["ka", "root"],
 		},
 	],
 	"nodeAttrs": [
 		{
-			"target": ["group:privusers","tag:trusted"], //the why, how of it all...
-			"attr":   ["funnel"], //the why, how of it all...
+			"target": ["group:privusers","tag:trusted"],
+			"attr":   ["funnel"],
 		},
 	],
 	"grants": [{
-		"src": ["group:privusers"], //the why, how of it all...
-		"dst": ["tag:app-golink"], //the why, how of it all...
+		"src": ["group:privusers"],
+		"dst": ["tag:app-golink"],
 		"app": {
 			"tailscale.com/cap/golink": [{
-				"admin": true, //the why, how of it all...
+				"admin": true,
 			}],
 		},
 	}],
@@ -60,21 +64,21 @@
 		//acls where one is allowed on all
 		{
 			"action": "accept",
-			"src":    ["tag:monitoring"], //monitoring allowed to ping all
+			"src":    ["tag:security"], //security allowed to ping all
 			"proto":  "1", 
 			"dst":    ["*:*"], 
 		},
 		//acls where all are allowed
-		{
-			"action": "accept", 
-			"src":    ["*"], //all allowed to access golink
-			"dst":    ["tag:app-golink:*"], 
-		},
-			{
-			"action": "accept", 
-			"src":    ["*"], //all allowed to access traefik
-			"dst":    ["tag:app-traefik:*"], 
-		},
+		//{
+		//	"action": "accept", 
+		//	"src":    ["*"], //all allowed to access golink
+		//	"dst":    ["tag:app-golink:*"], 
+		//},
+		//	{
+		//	"action": "accept", 
+		//	"src":    ["*"], //all allowed to access traefik
+		//	"dst":    ["tag:app-traefik:*"], 
+		//},
 		{
 			"action": "accept", 
 			"src":    ["*"], //all allowed to send logs to logger
@@ -87,99 +91,42 @@
 		},
 		//acls where trusted endpoints are allowed
 		{
-			"action": "accept", //the why, how of it all...
+			"action": "accept", 
 			"src":    ["tag:trusted"], //trusted allowed to all
 			"dst":    ["*:*"], 
 		},
-		{
-			"action": "accept", //the why, how of it all...
-			"src":    ["tag:trusted"], //trusted allowed to all
-			"dst":    ["tag:oob:*"], 
-		},
 		//acls where self is allowed
-			{
-			"action": "accept", //the why, how of it all...
-			"src":    ["tag:hypervisor"], //trusted allowed to all
-			"dst":    ["tag:hypervisor:*"], 
-		},
 		//acls where xos are allowed
 		{
 			"action": "accept", //the why, how of it all...
-			"src":    ["tag:app-xos"], //the why, how of it all...
-			"dst":    ["tag:hypervisor:*"], //the why, how of it all...
+			"src":    ["tag:app-xos"], //xos access to hypervisor mgmt
+			"dst":    ["tag:hypervisor:*"], 
 		},
 		//acls where cftunnel are allowed
-		{
-			"action": "accept", //the why, how of it all...
-			"src":    ["tag:app-cftunnel"], //the why, how of it all...
-			"dst":    ["tag:app-xos:*"], //the why, how of it all...
-		},
 		//acls where backup is allowed
-		{
-			"action": "accept", 
-			"src":    ["tag:docker"], //the why, how of it all...
-			"dst":    ["tag:storage:*"], 
-		},
-		{
-			"action": "accept", 
-			"src":    ["tag:internet"], //the why, how of it all...
-			"dst":    ["autogroup:internet:*"], 
-		},
 		//acls where monitoring is allowed
 		{
 			"action": "accept", 
-			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:app-mgmt:80,443"],
-		},
-		{
-			"action": "accept", 
-			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:hypervisor:80,443"], 
-		},
-		{
-			"action": "accept", 
-			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:storage:5001,443"],
-		},
-		{
-			"action": "accept", 
-			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:app-xos:80,443"],
-		},
-		{
-			"action": "accept",
-			"src":    ["tag:monitoring"], //monitoring is allowed mgmt
-			"dst":    ["tag:docker:80,443"],
-		},
-		//acls where xos is allowed to hypervisor
-		{
-			"action": "accept", 
-			"src":    ["tag:app-xos"], //xos is allowed all to hypervisor
-			"dst":    ["tag:hypervisor:*"],
+			"src":    ["tag:monitoring"], //monitoring is allowed web mgmt
+			"dst":    ["tag:*:80,443, 5001"],
 		},
 		// acls where xos can access nasty-nightfish
 		{
 			"action": "accept", 
-			"src":    ["tag:app-xos"], //xos is allowed all to hypervisor
+			"src":    ["tag:app-xos"], //xos is allowed all to storage
 			"dst":    ["tag:storage:*"],
 		},
-		//acls where dockge is allowed
-		{
-			"action": "accept", 
-			"src":    ["tag:docker"], //docker is allowed remote dockge
-			"dst":    ["tag:app-dockge:5001"],
-		},
 		//acls where docker-socket-proxy is allowed
-		{
-			"action": "accept", 
-			"src":    ["tag:docker"], //docker is allowed remote dockge
-			"dst":    ["tag:app-docker-socket-proxy:2375"],
-		},
+		//{
+		//	"action": "accept", 
+		//	"src":    ["tag:docker"], //docker is allowed remote dockge
+		//	"dst":    ["tag:app-docker-socket-proxy:2375"],
+		//},
 		//testing
-		{
-			"action": "accept", 
-			"src":    ["*"],
-			"dst":    ["*:*"],
+		//{
+		//	"action": "accept", 
+		//	"src":    ["*"],
+		//	"dst":    ["*:*"],
 		},
 		//extras
 		{
@@ -191,22 +138,22 @@
 			"action": "accept", 
 			"src":    ["group:privusers"], //privusers allowed to ssh
 			"dst":    ["tag:ssh:22"],
-		},
-		{
-			"action": "accept", 
-			"src":    ["group:guests"], //guests allowed on trusted
-			"dst":    ["tag:trusted:*"]
-		},
 		{
 			"action": "accept", 
 			"src":    ["tag:trusted"], //trusted allowed to ssh
 			"dst":    ["tag:ssh:22"],
 		},
+		//{
+		//	"action": "accept", 
+		//	"src":    ["group:guests"], //guests allowed on trusted
+		//	"dst":    ["tag:trusted:*"]
+		//},
+
 	],
 	"tests": [
 		{
-			"src":    "group:privusers", //the why, how of it all...
-			"accept": ["tag:ssh:22"], //the why, how of it all...
+			"src":    "group:privusers", //test that privusers always can access ssh
+			"accept": ["tag:ssh:22"],
 		},
 	],
 }
