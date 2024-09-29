@@ -26,6 +26,8 @@
 		///////////////////////////////////////////////////////////////////
 		"tag:app-xos":          ["group:privusers"], //xos access
 		"tag:app-golink":       ["group:privusers"], //golink container access
+		"tag:app-docker-socket-proxy":       ["group:privusers"], //dozzle container access
+
 	},
 	"hosts":               {
 		// "vm-subnet": "10.77.0.0/17" //sample net not in use
@@ -125,7 +127,7 @@
 		//acls where docker-socket-proxy is allowed
 		//{
 		//	"action": "accept", 
-		//	"src":    ["tag:docker"], //docker is allowed remote dockge
+		//	"src":    ["tag:app-docker-socket-proxy"], //docker is allowed remote dockge
 		//	"dst":    ["tag:app-docker-socket-proxy:2375"],
 		//},
 		//testing
