@@ -138,6 +138,12 @@
 			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
 			"dst":    ["tag:clp-worker11:5001"],
 		},
+		//acls test
+		{
+			"action": "accept", 
+			"src":    ["tag:docker"], //dockge is allowed remote dockge
+			"dst":    ["tag:clp-worker11:5001"],
+		},
 		//testing
 		//{
 		//	"action": "accept", 
