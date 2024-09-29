@@ -138,10 +138,10 @@
 			"dst":    ["tag:app-dockge:5001"],
 		},
 		//testing
-		//{
-		//	"action": "accept", 
-		//	"src":    ["*"],
-		//	"dst":    ["*:*"],
+		{
+			"action": "accept", 
+			"src":    ["*"],
+			"dst":    ["*:*"],
 		//extras
 		{
 			"action": "accept", 
