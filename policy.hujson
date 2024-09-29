@@ -26,7 +26,8 @@
 		///////////////////////////////////////////////////////////////////
 		"tag:app-xos":          ["group:privusers"], //xos access
 		"tag:app-golink":       ["group:privusers"], //golink container access
-		"tag:app-docker-socket-proxy":       ["group:privusers"], //dozzle container access
+		"tag:app-docker-socket-proxy":       ["group:privusers"], //docker-socket-proxy container access
+		"tag:app-dockge":       ["group:privusers"], //dockge container access
 
 	},
 	"hosts":               {
@@ -124,12 +125,18 @@
 			"src":    ["tag:app-xos"], //xos is allowed all to storage
 			"dst":    ["tag:storage:*"],
 		},
-		//acls where docker-socket-proxy is allowed
-		//{
-		//	"action": "accept", 
-		//	"src":    ["tag:app-docker-socket-proxy"], //docker is allowed remote dockge
-		//	"dst":    ["tag:app-docker-socket-proxy:2375"],
-		//},
+		acls where docker-socket-proxy is allowed
+		{
+			"action": "accept", 
+			"src":    ["tag:app-docker-socket-proxy"], //docker is allowed remote dockge
+			"dst":    ["tag:app-docker-socket-proxy:2375"],
+		},
+		acls where dockge is allowed
+		{
+			"action": "accept", 
+			"src":    ["tag:app-dockge"], //docker is allowed remote dockge
+			"dst":    ["tag:app-dockge:5001"],
+		},
 		//testing
 		//{
 		//	"action": "accept", 
