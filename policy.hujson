@@ -142,6 +142,7 @@
 			"action": "accept", 
 			"src":    ["*"],
 			"dst":    ["*:*"],
+		},
 		//extras
 		{
 			"action": "accept", 
