@@ -23,6 +23,7 @@
 		"tag:internet":         ["group:privusers"], //native internet
 		"tag:cicd":             ["group:privusers"], //deployed via pipeline
 		"tag:ssh":              ["group:privusers"], //tailscale ssh access
+		"tag:clp-worker11":              ["group:privusers"], //test
 		///////////////////////////////////////////////////////////////////
 		"tag:app-xos":          ["group:privusers"], //xos access
 		"tag:app-golink":       ["group:privusers"], //golink container access
@@ -135,7 +136,7 @@
 		{
 			"action": "accept", 
 			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
-			"dst":    ["tag:app-dockge:5001"],
+			"dst":    ["tag:clp-worker11:5001"],
 		},
 		//testing
 		//{
