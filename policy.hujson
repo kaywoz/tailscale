@@ -134,7 +134,7 @@
 		//acls where dockge is allowed
 		{
 			"action": "accept", 
-			"src":    ["*"], //dockge is allowed remote dockge
+			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
 			"dst":    ["tag:app-dockge:5001"],
 		},
 		//testing
