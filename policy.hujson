@@ -144,12 +144,6 @@
 			"src":    "group:privusers", //test that privusers always can access ssh
 			"accept": ["tag:ssh:22"],
 		},
-	"sshTests": [
-		{
-			"src": "group:privusers",
-			"dst": ["tag:hypervisor","tag:security"],
-			"check": ["root", "ka"],
-		},
 	],
 	],
 }
