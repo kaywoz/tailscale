@@ -92,7 +92,7 @@
 		{
 			"action": "accept", 
 			"src":    ["tag:hypervisor"]
-			"dst":    ["tag:hypervisor:*", "tag:storage:*"], 
+			"dst":    ["tag:hypervisor:*", "tag:storage:*"]
 		},
 		//acls where cftunnel are allowed
 		//acls where backup is allowed
