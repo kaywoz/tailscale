@@ -79,7 +79,7 @@
 		{
 			"action": "accept", 
 			"src":    ["*"],
-			"dst":    ["tag:app-golink:*", "tag:app-traefik:*", "tag:logging:5080,5081,5514","tag:monitoring:*"]
+			"dst":    ["tag:app-golink:*", "tag:logging:5080,5081,5514","tag:monitoring:*"]
 		},
 		//acls where trusted endpoints are allowed
 		{
