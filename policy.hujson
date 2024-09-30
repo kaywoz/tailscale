@@ -91,7 +91,7 @@
 		//hypervisor specific allow
 		{
 			"action": "accept", 
-			"src":    ["tag:hypervisor"]
+			"src":    ["tag:hypervisor"],
 			"dst":    ["tag:hypervisor:*", "tag:storage:*"]
 		},
 		//acls where cftunnel are allowed
