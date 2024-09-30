@@ -47,7 +47,6 @@
 			"src":    ["tag:trusted"],
 			"dst":    ["tag:ssh"],
 			"users":  ["ka", "root"],
-			"checkPeriod": "72h",
 		},
 	],
 	"nodeAttrs": [
