@@ -24,6 +24,7 @@
 		"tag:cicd":             ["group:privusers"], //deployed via pipeline
 		"tag:ssh":              ["group:privusers"], //tailscale ssh access
 		"tag:clp-worker11":     ["group:privusers"], //test
+		"tag:test":     ["group:privusers"], //just a test tag
 		///////////////////////////////////////////////////////////////////
 		"tag:app-golink":       ["group:privusers"], //golink container access
 		"tag:app-docker-socket-proxy":       ["group:privusers"], //docker-socket-proxy container access
@@ -118,6 +119,11 @@
 			"action": "accept", 
 			"src":    ["tag:docker"], //dockge is allowed remote dockge
 			"dst":    ["tag:clp-worker11:5001"],
+		},
+		{
+			"action": "accept", 
+			"src":    ["tag:trusted","192.168.2.0/24"]
+			"dst":    ["192.168.2.0/24:*"],
 		},
 		//testing
 		//{
