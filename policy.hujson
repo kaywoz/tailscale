@@ -106,11 +106,11 @@
 		//	"dst":    ["tag:app-docker-socket-proxy:2375"],
 		//},
 		//acls where dockge is allowed
-		//{
-		//	"action": "accept", 
-		//	"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
-		//	"dst":    ["tag:clp-worker11:5001"],
-		//},
+		{
+			"action": "accept", 
+			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
+			"dst":    [""tag:app-dockge":5001"],
+		},
 		//acls test below
 		//****************************************************
 		//************************ACLs for subnet router******
