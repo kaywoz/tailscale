@@ -25,6 +25,7 @@
 		"tag:app-golink":       ["group:privusers"], //golink container access
 		//"tag:app-docker-socket-proxy":       ["group:privusers"], //docker-socket-proxy container access
 		"tag:app-dockge":       ["group:privusers"], //dockge container access
+		"tag:app-beszel-agent":       ["group:privusers"], //dockge container access
 
 	},
 	"hosts":               {
@@ -110,6 +111,12 @@
 			"action": "accept", 
 			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
 			"dst":    ["tag:app-dockge:5001"],
+		},
+			//acls where beszel-agent is allowed to remote monitor beszel
+		{
+			"action": "accept", 
+			"src":    ["tag:app-beszel-agent"], //beszel is allowed remote beszel
+			"dst":    ["tag:app-beszel-agent:45876"],
 		},
 		//acls test below
 		//****************************************************
