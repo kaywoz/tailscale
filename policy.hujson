@@ -24,7 +24,7 @@
 		///////////////////////////////////////////////////////////////////
 		"tag:app-golink":       ["group:privusers"], //golink container access
 		//"tag:app-docker-socket-proxy":       ["group:privusers"], //docker-socket-proxy container access
-		//"tag:app-dockge":       ["group:privusers"], //dockge container access
+		"tag:app-dockge":       ["group:privusers"], //dockge container access
 
 	},
 	"hosts":               {
@@ -105,7 +105,7 @@
 		//	"src":    ["tag:app-docker-socket-proxy"], //socket proxy for dozzle
 		//	"dst":    ["tag:app-docker-socket-proxy:2375"],
 		//},
-		//acls where dockge is allowed
+		//acls where dockge is allowed to remote monitor dockge
 		{
 			"action": "accept", 
 			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
