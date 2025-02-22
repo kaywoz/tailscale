@@ -10,6 +10,7 @@
 		"tag:hypervisor":       ["group:privusers"], //xcp-ng nodes
 		"tag:storage":          ["group:privusers"], //all storage nodes
 		"tag:service":          ["group:privusers"], //all docker services
+		"tag:docker":          	["group:privusers"], //all docker nodes
 		"tag:oob":             	["group:privusers"], //any oob-devices
 		"tag:security":         ["group:privusers"], //all security devices and infra
 		"tag:guests":           ["group:privusers"], //guest assets
@@ -83,7 +84,13 @@
 			"src":    ["tag:trusted"], //trusted allowed to all
 			"dst":    ["*:*"], 
 		},
-		//hypervisor specific allow
+		//docker node allow to storage node
+	{	
+			"action": "accept", 
+			"src":    ["tag:docker"],
+			"dst":    ["tag:storage:111,2049"], //allow nfs over tailscale 
+		},
+
 		//acls where cftunnel are allowed
 		//acls where backup is allowed
 		//security allowed in web endpoints
