@@ -8,31 +8,26 @@
 	"tagOwners": {
 		//tags for types of devices and machines etc
 		"tag:hypervisor":       ["group:privusers"], //xcp-ng nodes
-		"tag:vm":           	["group:privusers"], //all vm's
-		"tag:docker":           ["group:privusers"], //all docker installations
 		"tag:storage":          ["group:privusers"], //all storage nodes
-		"tag:container":        ["group:privusers"], //all containers
 		"tag:service":          ["group:privusers"], //all docker services
 		"tag:oob":             	["group:privusers"], //any oob-devices
 		"tag:security":         ["group:privusers"], //all security devices and infra
-		"tag:logging":         	["group:privusers"], //all logging devices and infra
-		"tag:monitoring":       ["group:privusers"], //all monitoring devices and infra
 		"tag:guests":           ["group:privusers"], //guest assets
 		"tag:trusted": 			["group:privusers"], //natively trusted assets
 		"tag:exit-node":        ["group:privusers"], //all exit-nodes
 		"tag:internet":         ["group:privusers"], //native internet
-		"tag:cicd":             ["group:privusers"], //deployed via pipeline
+		"tag:auto":             ["group:privusers"], //deployed via pipeline
 		"tag:ssh":              ["group:privusers"], //tailscale ssh access
 		"tag:clp-worker11":     ["group:privusers"], //test
 		"tag:test":     ["group:privusers"], //just a test tag
 		///////////////////////////////////////////////////////////////////
 		"tag:app-golink":       ["group:privusers"], //golink container access
-		"tag:app-docker-socket-proxy":       ["group:privusers"], //docker-socket-proxy container access
-		"tag:app-dockge":       ["group:privusers"], //dockge container access
+		//"tag:app-docker-socket-proxy":       ["group:privusers"], //docker-socket-proxy container access
+		//"tag:app-dockge":       ["group:privusers"], //dockge container access
 
 	},
 	"hosts":               {
-		// "some subnet": "192.168.1.0/24" //sample net not in use
+		// "some subnet": "192.168.199.0/24" //sample net not in use
 	},
 	"randomizeClientPort": true, //previously used when opnsense was edge gw
 	"ssh": [ // privusers and trusted devices can access ssh tags with ka/root accounts
@@ -89,17 +84,12 @@
 			"dst":    ["*:*"], 
 		},
 		//hypervisor specific allow
-		{
-			"action": "accept", 
-			"src":    ["tag:hypervisor"],
-			"dst":    ["tag:hypervisor:*","tag:storage:*"],
-		},
 		//acls where cftunnel are allowed
 		//acls where backup is allowed
-		//monitoring allowed in web endpoints
+		//security allowed in web endpoints
 		{
 			"action": "accept", 
-			"src":    ["tag:monitoring"], //monitoring is allowed web mgmt
+			"src":    ["tag:security"], //security is allowed web mgmt
 			"dst":    ["*:80,443,5001"],
 		},
 		//acls where docker-socket-proxy is allowed
@@ -114,12 +104,10 @@
 			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
 			"dst":    ["tag:clp-worker11:5001"],
 		},
-		//acls test
-		{
-			"action": "accept", 
-			"src":    ["tag:docker"], //dockge is allowed remote dockge
-			"dst":    ["tag:clp-worker11:5001"],
-		},
+		//acls test below
+		//****************************************************
+		//************************ACLs for subnet router******
+		//****************************************************
 		{
 			"action": "accept", 
 			"src":    ["tag:trusted","192.168.2.0/24"],
