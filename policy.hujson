@@ -88,7 +88,7 @@
 	{	
 			"action": "accept", 
 			"src":    ["tag:docker"],
-			"dst":    ["tag:storage:111,2049"], //allow nfs over tailscale 
+			"dst":    ["tag:storage:111,2049,22"], //allow nfs over tailscale 
 		},
 
 		//acls where cftunnel are allowed
