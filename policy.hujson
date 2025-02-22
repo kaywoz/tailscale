@@ -109,7 +109,7 @@
 		{
 			"action": "accept", 
 			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
-			"dst":    ["tag:app-dockge":5001"],
+			"dst":    ["tag:app-dockge:5001"],
 		},
 		//acls test below
 		//****************************************************
