@@ -93,17 +93,17 @@
 			"dst":    ["*:80,443,5001"],
 		},
 		//acls where docker-socket-proxy is allowed
-		{
-			"action": "accept", 
-			"src":    ["tag:app-docker-socket-proxy"], //socket proxy for dozzle
-			"dst":    ["tag:app-docker-socket-proxy:2375"],
-		},
+		//{
+		//	"action": "accept", 
+		//	"src":    ["tag:app-docker-socket-proxy"], //socket proxy for dozzle
+		//	"dst":    ["tag:app-docker-socket-proxy:2375"],
+		//},
 		//acls where dockge is allowed
-		{
-			"action": "accept", 
-			"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
-			"dst":    ["tag:clp-worker11:5001"],
-		},
+		//{
+		//	"action": "accept", 
+		//	"src":    ["tag:app-dockge"], //dockge is allowed remote dockge
+		//	"dst":    ["tag:clp-worker11:5001"],
+		//},
 		//acls test below
 		//****************************************************
 		//************************ACLs for subnet router******
