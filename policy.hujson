@@ -31,7 +31,7 @@
 	"hosts":               {
 		// "some subnet": "192.168.199.0/24" //sample net not in use
 	},
-	"randomizeClientPort": true, //previously used when opnsense was edge gw
+	//randomizeClientPort": true, //previously used when opnsense was edge gw
 	"ssh": [ // privusers and trusted devices can access ssh tags with ka/root accounts
 		{
 			"action":      "check",
