@@ -9,11 +9,12 @@
 		//tags for types of devices and machines etc
 		"tag:hypervisor":       ["group:privusers"], //xcp-ng nodes
 		"tag:storage":          ["group:privusers"], //all storage nodes
-		"tag:service":          ["group:privusers"], //all docker services
+		"tag:service":          ["group:privusers"], //all services
 		"tag:docker":          	["group:privusers"], //all docker nodes
 		"tag:oob":             	["group:privusers"], //all oob-devices
 		"tag:security":         ["group:privusers"], //all security devices and infra
 		"tag:monitoring":       ["group:privusers"], //all monitoring devices and infra
+		"tag:proxy":      		["group:privusers"], //all monitoring devices and infra
 		"tag:guests":           ["group:privusers"], //guest assets
 		"tag:trusted": 			["group:privusers"], //natively trusted assets
 		"tag:exit-node":        ["group:privusers"], //all exit-nodes
@@ -54,6 +55,10 @@
 			"attr":   ["funnel"],
 		},
 	],
+	//****************************************************
+	//************************GRANTs************************
+	//****************************************************
+
 	"grants": [
 {
 "src": ["tag:trusted"],
@@ -70,6 +75,21 @@
 "dst": ["*"],
 "ip":  ["icmp:*"],
 },
+{
+"src": ["tag:proxy"],
+"dst": ["tag:services"],
+"ip":  ["tcp:*"],
+},
+{
+"src": ["tag:proxy"],
+"dst": ["tag:services"],
+"ip":  ["tcp:*"],
+},
+{
+"src": ["tag:trusted"],
+"dst": ["tag:proxy"],
+"ip":  ["tcp:*"],
+},
 ],
 	"tests": [
 		{
@@ -78,6 +98,3 @@
 		},
 	],
 }
-	//****************************************************
-	//************************ACLs************************
-	//****************************************************
