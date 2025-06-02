@@ -56,8 +56,14 @@
 	"grants": [
 {
 "src": ["tag:trusted"],
+"dst": ["tag:ssh"],
+"ip":  ["tcp:22"],
+},
+{
+"src": ["tag:trusted"],
 "dst": ["*"],
 "ip":  ["tcp:*"],
+},
 {
 "src": ["tag:security"],
 "dst": ["*"],
