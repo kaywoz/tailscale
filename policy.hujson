@@ -13,6 +13,7 @@
 		"tag:docker":          	["group:privusers"], //all docker nodes
 		"tag:oob":             	["group:privusers"], //all oob-devices
 		"tag:security":         ["group:privusers"], //all security devices and infra
+		"tag:monitoring":       ["group:privusers"], //all monitoring devices and infra
 		"tag:guests":           ["group:privusers"], //guest assets
 		"tag:trusted": 			["group:privusers"], //natively trusted assets
 		"tag:exit-node":        ["group:privusers"], //all exit-nodes
@@ -65,7 +66,7 @@
 "ip":  ["tcp:*"],
 },
 {
-"src": ["tag:security"],
+"src": ["tag:security","tag:monitoring"],
 "dst": ["*"],
 "ip":  ["icmp:*"],
 },
