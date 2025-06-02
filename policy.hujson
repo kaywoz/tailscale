@@ -58,6 +58,8 @@
 "src": ["tag:trusted"],
 "dst": ["*"],
 "ip":  ["icmp:*"],
+},
+{
 "src": ["tag:trusted"],
 "dst": ["tag:hypervisor"],
 "ip":  ["icmp:*"],
