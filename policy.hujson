@@ -55,14 +55,13 @@
 	],
 	"grants": [
 {
-"src": ["tag:security"],
-"dst": ["*"],
-"ip":  ["icmp:*"],
-},
-{
 "src": ["tag:trusted"],
 "dst": ["*"],
 "ip":  ["tcp:*"],
+{
+"src": ["tag:security"],
+"dst": ["*"],
+"ip":  ["icmp:*"],
 },
 ],
 	"tests": [
