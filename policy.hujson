@@ -77,12 +77,12 @@
 },
 {
 "src": ["tag:proxy"],
-"dst": ["tag:services"],
+"dst": ["tag:service"],
 "ip":  ["tcp:*"],
 },
 {
 "src": ["tag:proxy"],
-"dst": ["tag:services"],
+"dst": ["tag:service"],
 "ip":  ["tcp:*"],
 },
 {
