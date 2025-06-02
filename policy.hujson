@@ -55,16 +55,22 @@
 	],
 	"grants": [
 {
-"src": ["tag:trusted"],
+"src": ["tag:security"],
 "dst": ["*"],
 "ip":  ["icmp:*"],
 },
 {
 "src": ["tag:trusted"],
-"dst": ["tag:hypervisor"],
-"ip":  ["icmp:*"],
+"dst": ["*"],
+"ip":  ["tcp:*"],
 },
 ],
+	"tests": [
+		{
+			"src":    "group:privusers", //test that privusers always can access ssh
+			"accept": ["tag:ssh:22"],
+		},
+	],
 }
 	//****************************************************
 	//************************ACLs************************
