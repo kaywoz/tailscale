@@ -67,7 +67,7 @@
 	"tests": [
 		{
 			"src":    "group:privusers", //test that privusers always can access ssh
-			"accept": ["tag:ssh:22"],
+			"accept": ["tag:ssh:*"],
 		},
 	],
 }
