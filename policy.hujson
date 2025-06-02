@@ -54,12 +54,7 @@
 		},
 	],
 	"grants": [
-	{
-	"src": ["group:privusers"],
-	"dst": ["tag:app-golink"],
-	"app": {"tailscale.com/cap/golink": [
-		{"admin": true,}],
-		},
+{
 "src": ["tag:trusted"],
 "dst": ["*"],
 "ip":  ["icmp:*"],
