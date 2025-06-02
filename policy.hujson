@@ -72,8 +72,8 @@
 ],
 	"tests": [
 		{
-			"src":    "tag:trusted", //test that privusers always can access ssh
-			"accept": ["tag:ssh:*"],
+			"src":    "tag:trusted", //test that trusted devices always can access ssh
+			"accept": ["tag:ssh:22"],
 		},
 	],
 }
