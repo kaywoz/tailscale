@@ -11,7 +11,7 @@
 		"tag:storage":          ["group:privusers"], //all storage nodes
 		"tag:service":          ["group:privusers"], //all docker services
 		"tag:docker":          	["group:privusers"], //all docker nodes
-		"tag:oob":             	["group:privusers"], //any oob-devices
+		"tag:oob":             	["group:privusers"], //all oob-devices
 		"tag:security":         ["group:privusers"], //all security devices and infra
 		"tag:guests":           ["group:privusers"], //guest assets
 		"tag:trusted": 			["group:privusers"], //natively trusted assets
@@ -19,26 +19,26 @@
 		"tag:internet":         ["group:privusers"], //native internet
 		"tag:auto":             ["group:privusers"], //deployed via pipeline
 		"tag:ssh":              ["group:privusers"], //tailscale ssh access
-		"tag:clp-worker11":     ["group:privusers"], //test
+		"tag:clp-worker11":     ["group:privusers"], //clp-worker11
 		"tag:test":     ["group:privusers"], //just a test tag
 		///////////////////////////////////////////////////////////////////
-		"tag:app-golink":       ["group:privusers"], //golink container access
+		//"tag:app-golink":       ["group:privusers"], //golink container access
 		//"tag:app-docker-socket-proxy":       ["group:privusers"], //docker-socket-proxy container access
-		"tag:app-dockge":       ["group:privusers"], //dockge container access
-		"tag:app-beszel-agent":       ["group:privusers"], //dockge container access
+		//"tag:app-dockge":       ["group:privusers"], //dockge container access
+		//"tag:app-beszel-agent":       ["group:privusers"], //dockge container access
 
 	},
 	"hosts":               {
 		// "some subnet": "192.168.199.0/24" //sample net not in use
 	},
-	//randomizeClientPort": true, //previously used when opnsense was edge gw ggg
+	//randomizeClientPort": true, //previously used when opnsense was edge gw
 	"ssh": [ // privusers and trusted devices can access ssh tags with ka/root accounts
 		{
 			"action":      "check",
 			"src":         ["group:privusers"], 
 			"dst":         ["tag:ssh"], 
 			"users":       ["ka", "root"],
-			"checkPeriod": "72h",
+			"checkPeriod": "24h",
 		},
 		{
 			"action": "accept", 
@@ -53,14 +53,17 @@
 			"attr":   ["funnel"],
 		},
 	],
-	"grants": [{
-		"src": ["group:privusers"],
-		"dst": ["tag:app-golink"],
-		"app": {
-			"tailscale.com/cap/golink": [{
-				"admin": true,
-			}],
+	"grants": [
+	{
+	"src": ["group:privusers"],
+	"dst": ["tag:app-golink"],
+	"app": {"tailscale.com/cap/golink": [
+		{"admin": true,}],
 		},
+"src": ["tag:trusted],
+"dst": ["*"],
+"ip":  ["icmp:*"],
+},
 	}],
 	//****************************************************
 	//************************ACLs************************
