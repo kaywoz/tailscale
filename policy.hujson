@@ -60,7 +60,7 @@
 	"app": {"tailscale.com/cap/golink": [
 		{"admin": true,}],
 		},
-"src": ["tag:trusted],
+"src": ["tag:trusted"],
 "dst": ["*"],
 "ip":  ["icmp:*"],
 },
