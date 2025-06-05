@@ -90,6 +90,11 @@
 "dst": ["tag:proxy"],
 "ip":  ["tcp:*"],
 },
+{
+"src": ["tag:trusted"],
+"dst": ["tag:storage"],
+"ip":  ["tcp:*"],
+},
 ],
 	"tests": [
 		{
