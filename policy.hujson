@@ -99,7 +99,7 @@
 { //ha to synonology dsm portal
 "src": ["tag:ha"],
 "dst": ["tag:storage"],
-"ip":  ["tcp:5001"],
+"ip":  ["tcp:*"],
 },
 ],
 	"tests": [
