@@ -17,6 +17,7 @@
 		"tag:proxy":      		["group:privusers"], //all monitoring devices and infra
 		"tag:guests":           ["group:privusers"], //guest assets
 		"tag:trusted": 			["group:privusers"], //natively trusted assets
+		"tag:ha": 				["group:privusers"], //all home automation
 		"tag:exit-node":        ["group:privusers"], //all exit-nodes
 		"tag:internet":         ["group:privusers"], //native internet
 		"tag:auto":             ["group:privusers"], //deployed via pipeline
@@ -94,6 +95,11 @@
 "src": ["tag:trusted"],
 "dst": ["tag:storage"],
 "ip":  ["tcp:*"],
+},
+{ //ha to synonology dsm portal
+"src": ["tag:ha"],
+"dst": ["tag:storage"],
+"ip":  ["tcp:5001"],
 },
 ],
 	"tests": [
